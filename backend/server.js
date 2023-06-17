@@ -1,8 +1,9 @@
 const express = require("express");
 const connectDB = require("./config/db");
 const dotenv = require("dotenv").config();
-const port = process.env.PORT || "4000";
+const port = process.env.PORT || 4000;
 
+const cors = require("cors");
 // connexion à la DB
 connectDB();
 
@@ -24,6 +25,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/project", require("./routes/post.routes"));
 
 // server
-app.listen(process.env.PORT, () => {
-  console.log(`Listening on port ${process.env.PORT}`);
+app.listen(port, () => {
+  console.log(`Listening on port ${port}`);
 });
