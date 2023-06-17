@@ -1,7 +1,7 @@
 const express = require("express");
 const connectDB = require("./config/db");
 const dotenv = require("dotenv").config();
-const port = serverController.normalizePort(process.env.PORT || "4000");
+const port = process.env.PORT || "4000";
 
 // connexion à la DB
 connectDB();
