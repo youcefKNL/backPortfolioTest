@@ -9,7 +9,11 @@ connectDB();
 
 const app = express();
 const corsOptions = {
-  origin: ["http://localhost:3000", "https://youcefknl.github.io"],
+  origin: [
+    "http://localhost:3000",
+    "https://youcefknl.github.io",
+    "https://backportfolio-n0e8.onrender.com",
+  ],
   credentials: true,
   allowedHeaders:
     "Origin, X-Requested-With, Content, Accept, Content-Type, Authorization",
