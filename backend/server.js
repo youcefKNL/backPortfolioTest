@@ -15,7 +15,7 @@ const corsOptions = {
     "Origin, X-Requested-With, Content, Accept, Content-Type, Authorization",
   methods: "GET,POST",
   preflightContinue: false,
-  "font-src": ["'self'", "https://youcefknl.github.io"],
+  "font-src": "*",
 };
 app.use(cors(corsOptions));
 // Middleware qui permet de traiter les données de la Request
