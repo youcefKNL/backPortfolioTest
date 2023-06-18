@@ -16,6 +16,7 @@ const corsOptions = {
   exposedHeaders: ["sessionId"],
   methods: "GET,POST",
   preflightContinue: false,
+  "font-src": ["<URL>"],
 };
 app.use(cors(corsOptions));
 // Middleware qui permet de traiter les données de la Request
