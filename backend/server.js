@@ -9,18 +9,13 @@ connectDB();
 
 const app = express();
 const corsOptions = {
-  origin: [
-    "http://localhost:3000",
-    "https://youcefknl.github.io",
-    "https://backportfolio-n0e8.onrender.com",
-  ],
+  origin: ["http://localhost:3000", "https://youcefknl.github.io"],
   credentials: true,
   allowedHeaders:
     "Origin, X-Requested-With, Content, Accept, Content-Type, Authorization",
-  exposedHeaders: ["sessionId"],
   methods: "GET,POST",
   preflightContinue: false,
-  "font-src": ["<URL>"],
+  "font-src": ["'self'", "https://youcefknl.github.io"],
 };
 app.use(cors(corsOptions));
 // Middleware qui permet de traiter les données de la Request
