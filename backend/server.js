@@ -23,6 +23,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use("/project", require("./routes/post.routes"));
+app.use("/contact", require("./routes/contact.routes"));
 
 // server
 app.listen(port, () => {
