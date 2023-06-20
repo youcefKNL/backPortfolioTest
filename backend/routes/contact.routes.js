@@ -6,10 +6,13 @@ const router = express.Router();
 // Configurer Nodemailer
 const transporter = nodemailer.createTransport({
   host: "smtp-mail.outlook.com",
-  secureConnection: false,
+  secureConnection: true,
   port: 587,
+  //   tls: {
+  //     ciphers: "SSLv3",
+  //   },
   tls: {
-    ciphers: "SSLv3",
+    ciphers: "TLSv1.3",
   },
   auth: {
     user: process.env.MAIL,
