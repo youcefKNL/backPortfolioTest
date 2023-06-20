@@ -12,8 +12,8 @@ const transporter = nodemailer.createTransport({
     ciphers: "SSLv3",
   },
   auth: {
-    user: "khenichil_youcef@hotmail.fr",
-    pass: "Hotmail+91",
+    user: process.env.MAIL,
+    pass: process.env.MAIL_PASS,
   },
 });
 
@@ -21,8 +21,8 @@ router.post("/", (req, res) => {
   const { name, email, message } = req.body;
 
   const mailOptions = {
-    from: "khenichil_youcef@hotmail.fr",
-    to: "khenichil_youcef@hotmail.fr", // Adresse e-mail de destination
+    from: process.env.MAIL,
+    to: process.env.MAIL, // Adresse e-mail de destination
     subject: `[PORTFOLIO] Nouveau message de ${name}`,
     text: `
       Nom: ${name} 
