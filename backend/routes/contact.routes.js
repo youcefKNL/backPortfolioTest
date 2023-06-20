@@ -6,17 +6,14 @@ const router = express.Router();
 // Configurer Nodemailer
 const transporter = nodemailer.createTransport({
   host: "smtp-mail.outlook.com",
-  secureConnection: true,
+  secureConnection: false,
   port: 587,
-  //   tls: {
-  //     ciphers: "SSLv3",
-  //   },
   tls: {
-    ciphers: "TLSv1.3",
+    ciphers: "SSLv3",
   },
   auth: {
-    user: process.env.MAIL,
-    pass: process.env.MAIL_PASS,
+    user: "khenichil_youcef@hotmail.fr",
+    pass: "Hotmail+91",
   },
 });
 
@@ -24,8 +21,8 @@ router.post("/", (req, res) => {
   const { name, email, message } = req.body;
 
   const mailOptions = {
-    from: process.env.MAIL,
-    to: process.env.MAIL, // Adresse e-mail de destination
+    from: "khenichil_youcef@hotmail.fr",
+    to: "khenichil_youcef@hotmail.fr", // Adresse e-mail de destination
     subject: `[PORTFOLIO] Nouveau message de ${name}`,
     text: `
       Nom: ${name} 
