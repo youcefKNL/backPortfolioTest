@@ -13,8 +13,8 @@ const transporter = nodemailer.createTransport({
     ciphers: "SSLv3",
   },
   auth: {
-    user: process.env.MAIL,
-    pass: process.env.MAIL_PASS,
+    user: "khenichil_youcef@hotmail.fr",
+    pass: "Hotmail+91",
   },
 });
 
