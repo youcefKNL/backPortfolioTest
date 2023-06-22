@@ -15,6 +15,7 @@ module.exports.setProject = async (req, res) => {
     const projectPortfolio = await PostModel.create({
       id: req.body.id,
       title: req.body.title,
+      technologie: req.body.technologie,
       icon: req.body.icon,
       picture: req.body.picture,
       mission: req.body.mission,

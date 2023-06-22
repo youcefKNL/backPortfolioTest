@@ -6,8 +6,9 @@ const router = express.Router();
 // Configurer Nodemailer
 const transporter = nodemailer.createTransport({
   host: "smtp-mail.outlook.com",
-  secureConnection: false,
+  secureConnection: true,
   port: 587,
+
   tls: {
     ciphers: "SSLv3",
   },
@@ -33,6 +34,15 @@ router.post("/", (req, res) => {
 
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
+      // verify connection configuration
+      transporter.verify(function (error, success) {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log("Server is ready to take our messages");
+        }
+      });
+
       console.error(error);
       res.status(500).json({
         success: false,

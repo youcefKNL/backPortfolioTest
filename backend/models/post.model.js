@@ -8,6 +8,9 @@ const postSchema = mongoose.Schema({
   title: {
     type: String,
   },
+  technologie: {
+    type: String,
+  },
   icon: {
     type: [String],
   },
