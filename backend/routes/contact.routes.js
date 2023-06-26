@@ -19,12 +19,12 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-router.post("/", (req, res) => {
+router.post("/", async (req, res) => {
   const { name, email, message } = req.body;
 
   const mailOptions = {
     from: process.env.MAIL,
-    to: process.env.MAIL, // Adresse e-mail de destination
+    to: process.env.MAIL,
     subject: `[PORTFOLIO] Nouveau message de ${name}`,
     text: `
       Nom: ${name}
@@ -33,29 +33,23 @@ router.post("/", (req, res) => {
     `,
   };
 
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      // verify connection configuration
-      transporter.verify(function (error, success) {
-        if (error) {
-          console.log(error);
-        } else {
-          console.log("Server is ready to take our messages");
-        }
-      });
+  try {
+    await transporter.sendMail(mailOptions);
+    console.log("E-mail envoyé");
+    res.status(200).json({
+      success: true,
+      message: "L'e-mail a été envoyé avec succès.",
+    });
+  } catch (error) {
+    // verify connection configuration
+    await transporter.verify();
 
-      console.error(error);
-      res.status(500).json({
-        success: false,
-        error: "Une erreur s'est produite lors de l'envoi de l'e-mail.",
-      });
-    } else {
-      console.log("E-mail envoyé:", info.response);
-      res
-        .status(200)
-        .json({ success: true, message: "L'e-mail a été envoyé avec succès." });
-    }
-  });
+    console.error(error);
+    res.status(500).json({
+      success: false,
+      error: "Une erreur s'est produite lors de l'envoi de l'e-mail.",
+    });
+  }
 });
 
 module.exports = router;
